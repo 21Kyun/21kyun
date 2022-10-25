@@ -1,5 +1,6 @@
-### Hi there 👋
-
+### 프로젝트D (가명) 👋
+핵앤슬래쉬 RPG
+핵심 시스템 : "스킬 파츠"를 파밍하여 자신의 스킬을 변형, 강화하여 자신만의 스킬을 만들어낼 수 있는 스킬 시스템
 <!--
 **21Kyun/21kyun** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
