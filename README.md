@@ -1,4 +1,5 @@
-### Hi there 👋
+### 균고구마(21Kyun) 👋
+PPT - 제작중인 게임파일
 
 <!--
 **21Kyun/21kyun** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
