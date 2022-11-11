@@ -62,6 +62,7 @@
     <Compile Include="Assets\script\SubSkill.cs" />
     <Compile Include="Assets\script\Skill.cs" />
     <Compile Include="Assets\script\SubSkill\projectile doble.cs" />
+    <Compile Include="Assets\script\MainSkillSlot.cs" />
     <Compile Include="Assets\script\Missile.cs" />
     <Compile Include="Assets\script\EquipSubSkillSlot.cs" />
     <Compile Include="Assets\script\DragSlot.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\script\SubSkillSlot.cs" />
     <Compile Include="Assets\script\Attacktag.cs" />
     <Compile Include="Assets\script\CameraMove.cs" />
+    <Compile Include="Assets\script\MainSKillButten.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
