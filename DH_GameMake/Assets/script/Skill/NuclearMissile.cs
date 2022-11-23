@@ -42,11 +42,9 @@ public class NuclearMissile : MonoBehaviour
 
     void UseMultiMissile()
     {
+        Debug.Log("Test Line");
         Player player = (Player)FindObjectOfType(typeof(Player));
-
-
         StartCoroutine(NclMisPos(transform.position));
-
         player.IsUseSkill = false;
         Destroy(gameObject, 1);
     }

@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public bool IsUseSkill;
     public bool IsSkillUI;
 
-    public float[] SkillCoolTime = new float[7];
+    public float[] SkillCoolTime = new float[8];
 
     public float QSkillCoolDown;
     public float WSkillCoolDown;
@@ -77,9 +77,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private SkillWinUI TheSkillWin;
     [SerializeField]
-    private List<Skill> _MainSkill;
-    [SerializeField]
     private GameObject QskillPrefab;
+
+
+    public List<Skill> _MainSkill;
 
     //public GameObject QSkill;
     //public GameObject WSkill;
@@ -318,19 +319,25 @@ public class Player : MonoBehaviour
     void PlayerUseSkill()
     {
         //Missile missile = (Missile)FindObjectOfType(typeof(Missile));
-        MultiMissile missile = MissileGO.GetComponent<MultiMissile>();
+        //MultiMissile missile = MissileGO.GetComponent<MultiMissile>();
         //float SkillCoolTime = GetComponent<MultiMissile>().MMSkillCoolDown;
         //MultiMissile Skillscript = _MainSkill[0].SkillPrefab.GetComponent<MultiMissile>();
-        if (SkillChange == true) {
+
+
+        if (SkillChange == true)
+        {
             for (int i = 0; i < 8; i++)
             {
                 Debug.Log(i);
-                SkillCoolTime[i] = _MainSkill[i].SkillCoolDown;
+                if (_MainSkill[i] != null)
+                {
+                    SkillCoolTime[i] = _MainSkill[i].SkillCoolDown;
+                }
                 SkillChange = false;
             }
-            
+
         }
-        
+
 
         QSkillCoolDown += Time.deltaTime;
         QSkillCoolDownReady = SkillCoolTime[0] < QSkillCoolDown;
@@ -341,26 +348,25 @@ public class Player : MonoBehaviour
         if (QDown && !EnemySumRedy && !IsUseSkill && QSkillCoolDownReady && !ActionController)
         {
             Debug.Log("QDown");
-            isMove = false;
-            anim.SetBool("IsWalk", false);
-            IsUseSkill = true;
-            agent.speed = 0f;
-            RaycastHit hit;
-            if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit))
-            {
-                Vector3 AttacVec = hit.point - transform.position;
-                AttacVec.y = 0;
-                transform.LookAt(transform.position + AttacVec);
-            }
             Debug.Log("Player Mpos = " + Mpos);
             StartCoroutine(UseQskill(Mpos));
-            QSkillCoolDown = 0;
+            
         }
 
 
         if (WDown && !EnemySumRedy && !IsUseSkill && WSkillCoolDownReady && !ActionController)
         {
             Debug.Log("WDown");
+            Debug.Log("Player Mpos = " + Mpos);
+            StartCoroutine(UseWskill(Mpos));
+            
+        }
+    }
+
+    IEnumerator UseQskill(Vector3 Mpos)
+    {
+        if (_MainSkill[0] != null)
+        {
             isMove = false;
             anim.SetBool("IsWalk", false);
             IsUseSkill = true;
@@ -372,28 +378,39 @@ public class Player : MonoBehaviour
                 AttacVec.y = 0;
                 transform.LookAt(transform.position + AttacVec);
             }
-            Debug.Log("Player Mpos = " + Mpos);
-            StartCoroutine(UseWskill(Mpos));
-            WSkillCoolDown = 0;
+            var newQskill = Instantiate(_MainSkill[0].SkillPrefab, Mpos, MissilePos.rotation);
+            Debug.Log("Instanse ScriptableObj = " + _MainSkill[0]);
+            Debug.Log(newQskill);
+            //Destroy(newQskill);
+            QSkillCoolDown = 0;
+            yield return null;
         }
-    }
-
-    IEnumerator UseQskill(Vector3 Mpos)
-    {
-        var newQskill = Instantiate(_MainSkill[0].SkillPrefab, Mpos , MissilePos.rotation);
-        Debug.Log("Instanse ScriptableObj = " + _MainSkill[0]);
-        Debug.Log(newQskill);
-        //Destroy(newQskill);
-        yield return null;
+        
     }
 
     IEnumerator UseWskill(Vector3 Mpos)
     {
-        var newWskill = Instantiate(_MainSkill[1].SkillPrefab, Mpos, MissilePos.rotation);
-        Debug.Log("Instanse ScriptableObj = " + _MainSkill[1]);
-        Debug.Log(newWskill);
-        //Destroy(newQskill);
-        yield return null;
+        if (_MainSkill[1] != null)
+        {
+            isMove = false;
+            anim.SetBool("IsWalk", false);
+            IsUseSkill = true;
+            agent.speed = 0f;
+            RaycastHit hit;
+            if (Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hit))
+            {
+                Vector3 AttacVec = hit.point - transform.position;
+                AttacVec.y = 0;
+                transform.LookAt(transform.position + AttacVec);
+            }
+            var newWskill = Instantiate(_MainSkill[1].SkillPrefab, Mpos, MissilePos.rotation);
+            Debug.Log("Instanse ScriptableObj = " + _MainSkill[1]);
+            Debug.Log(newWskill);
+            //Destroy(newQskill);
+            WSkillCoolDown = 0;
+            yield return null;
+        }
+        
     }
 
 

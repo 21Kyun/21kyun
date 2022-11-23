@@ -14,8 +14,9 @@ public class SkillWinUI : MonoBehaviour
     [SerializeField]
     private GameObject go_EquipSubSkillParet;
 
-    private SubSkillSlot[] SubSlots;
-    private EquipSubSkillSlot[] EquipSubSkillSolt;
+    // ½ºÅ³ ½½·Ôµé
+    public SubSkillSlot[] SubSlots;
+    public EquipSubSkillSlot[] EquipSubSkillSolt;
 
     private void Start()
     {

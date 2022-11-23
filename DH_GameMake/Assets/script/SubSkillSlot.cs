@@ -26,32 +26,7 @@ public class SubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     void Start()
     {
     }
-
-
-    //이미지 투명도 조절
-    private void SetColor(float _alpha)
-    {
-        Color color = SubSkillImg.color;
-        color.a = _alpha;
-        SubSkillImg.color = color;
-        SubSlotImg.color = color;
-    }
-
-    //서브스킬 추가
-    public void AddSkill(SubSkill _subskill)
-    {
-        subskill = _subskill;
-        SubSkillImg.sprite = subskill.SubSkillImg;
-        SetColor(1);
-    }
-
-    //스킬 지우기
-    public void ClearSlot()
-    {
-        subskill = null;
-        SubSkillImg.sprite = null;
-        SetColor(0);
-    }
+    
 
     //클릭
     public void OnPointerClick(PointerEventData eventData)
@@ -115,13 +90,21 @@ public class SubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     //드래그 종료
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        //Debug.Log("OnEndDrag");
         DragSlot.instance.SetColor(0);
         //DragSlot.instance.dragSlot = null;
         if (DragSlot.instance.DragOnEquip == true)
         {
-            DragSlot.instance.dragSlot.ClearSlot();
-            Debug.Log("ClearSlot");
+            if (DragSlot.instance.SlotOn == true)
+            {
+                //Debug.Log("SlotOn");
+                AddSkill(DragSlot.instance.Instans);
+            }
+            else
+            {
+                DragSlot.instance.dragSlot.ClearSlot();
+            }
+            //Debug.Log("ClearSlot");
             DragSlot.instance.dragSlot = null;
         }
         else
@@ -132,9 +115,31 @@ public class SubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     }
 
 
+    //이미지 투명도 조절
+    private void SetColor(float _alpha)
+    {
+        Color color = SubSkillImg.color;
+        color.a = _alpha;
+        SubSkillImg.color = color;
+        SubSlotImg.color = color;
+    }
+
+    //서브스킬 추가
+    public void AddSkill(SubSkill _subskill)
+    {
+        subskill = _subskill;
+        SubSkillImg.sprite = subskill.SubSkillImg;
+        SetColor(1);
+    }
 
 
-
+    //스킬 지우기
+    public void ClearSlot()
+    {
+        subskill = null;
+        SubSkillImg.sprite = null;
+        SetColor(0);
+    }
 
     //슬롯 바꾸기
     public void ChangeSlot()

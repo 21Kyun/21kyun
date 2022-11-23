@@ -4981,7 +4981,7 @@ GameObject:
   - component: {fileID: 221402518520904965}
   - component: {fileID: 331064152024012997}
   - component: {fileID: 331064152024012987}
-  - component: {fileID: 170901451}
+  - component: {fileID: -5275776182427797895}
   m_Layer: 0
   m_Name: Real_Missile
   m_TagString: Bullet
@@ -5037,7 +5037,7 @@ CapsuleCollider:
   m_Height: 36
   m_Direction: 2
   m_Center: {x: 0, y: 0.15, z: 17.19}
---- !u!114 &170901451
+--- !u!114 &-5275776182427797895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5046,17 +5046,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 601587644545165247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea300a05a4a0a744db423f98e6299260, type: 3}
+  m_Script: {fileID: 11500000, guid: 76ee40de9a1febf4d90bc3e2842c5cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  MissileRate: 5
-  Butten: 0
-  MissilePos: {fileID: 0}
-  MissilePos2: {fileID: 0}
-  MissileGO: {fileID: 0}
-  Player: {fileID: 0}
-  SkillCoolDown: 0
+  SkillNum: 1
 --- !u!1 &8490568591803129702
 GameObject:
   m_ObjectHideFlags: 0

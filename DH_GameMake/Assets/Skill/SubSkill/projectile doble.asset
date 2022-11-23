@@ -15,4 +15,4 @@ MonoBehaviour:
   SubSkillName: projectile doble
   subSkillType: 0
   SubSkillImg: {fileID: 21300000, guid: e66bdadbde8f9c5499ca322b1cf2b30f, type: 3}
-  SubSkillPrefab: {fileID: 0}
+  SubSkillPrefab: {fileID: 231178283492734350, guid: f86a23d16192dd148b71e56d42bf456c, type: 3}

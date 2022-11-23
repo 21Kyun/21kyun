@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1b5af074ad8284e9ed7e22435e75ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  MissileRate: 0
+  damage: 100
+  MissileRate: 10
   Butten: 0
   nuclerMissilePos: {fileID: 0}
   MissileGO: {fileID: 1654399611116395746, guid: 0481037771eec6c46bd6a70a4d3f94f1, type: 3}
   Player: {fileID: 0}
-  QSkillCoolDown: 0
+  NMSkillCoolDown: 0

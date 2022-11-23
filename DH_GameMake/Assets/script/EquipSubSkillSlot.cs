@@ -4,16 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class EquipSubSkillSlot : MonoBehaviour , IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
 
     public SubSkill Equip_subskill;
-    private SubSkillSlot _subSkillSlot;
+    public Skill Equip_Skill;
     public Image Equip_SubSkill_Slot_img;
     public Image Equip_SubSkill_img;
     public Image MaskImg;
 
     public DragSlot drag_slot;
+
 
     //public bool DragOnInv = false;
 
@@ -59,9 +60,16 @@ public class EquipSubSkillSlot : MonoBehaviour , IPointerClickHandler, IBeginDra
         DragSlot.instance.SetColor(0);
         if (/*드래그 슬롯이 장착슬롯과 충돌 할 때*/ DragSlot.instance.DragOnInv == true)
         {
-            DragSlot.instance.Equip_dragSlot.ClearSlot();
+            if (DragSlot.instance.SlotOn == true)
+            {
+                Debug.Log("SlotOn");
+                AddSkill(DragSlot.instance.Instans);
+            }
+            else
+            {
+                DragSlot.instance.Equip_dragSlot.ClearSlot();
+            }
             DragSlot.instance.Equip_dragSlot = null;
-
         }
         else
         {
@@ -72,7 +80,7 @@ public class EquipSubSkillSlot : MonoBehaviour , IPointerClickHandler, IBeginDra
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+
     }
 
 
@@ -115,6 +123,11 @@ public class EquipSubSkillSlot : MonoBehaviour , IPointerClickHandler, IBeginDra
         Equip_subskill = _subskill;
         Equip_SubSkill_img.sprite = Equip_subskill.SubSkillImg;
         SetColor(1);
+        //MainSkillSlot _Skill = (MainSkillSlot)FindObjectOfType(typeof(MainSkillSlot));
+        //Skill skill = (Skill)FindObjectOfType(typeof(Skill));
+        //Debug.Log("_Skill.Equip_Skill._SubSkill = " + skill._SubSkill[0]);
+        //Debug.Log("Equip_subskill = " + Equip_subskill);
+        //_Skill.Equip_Skill._SubSkill.Add(Equip_subskill);
     }
 
     //스킬 삭제

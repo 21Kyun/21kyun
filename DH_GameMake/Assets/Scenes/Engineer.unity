@@ -238,7 +238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &46179824
 RectTransform:
   m_ObjectHideFlags: 0
@@ -313,8 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2514b817425372469dca23c3bdeb450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainSkillImg: {fileID: 0}
+  Equip_Skill: {fileID: 0}
+  Equip_Skill_img: {fileID: 0}
   MainSkillSlotImg: {fileID: 0}
+  MaskImg: {fileID: 0}
 --- !u!1001 &63416611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,6 +324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1867358456}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5358491838736712020, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_text
       value: E
@@ -1330,6 +1336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSkillSlot: {fileID: 1009179428}
   SkillImg: {fileID: 799298501}
+  SkillName: {fileID: 11400000, guid: 0027c4714a0f5b04f97c0916e101cecf, type: 2}
 --- !u!114 &359756169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1958,6 +1965,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771191988}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5358491838736712020, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_text
       value: D
@@ -2513,6 +2524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSkillSlot: {fileID: 1009179428}
   SkillImg: {fileID: 870424377}
+  SkillName: {fileID: 11400000, guid: b0babf29360122d4bbdd744ceb0e9f6c, type: 2}
 --- !u!1001 &664501500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2915,6 +2927,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771191988}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5358491838736712020, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_text
       value: F
@@ -3485,7 +3501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &880375741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3559,8 +3575,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1595577536}
   - {fileID: 1058732352}
+  - {fileID: 1595577536}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4142,8 +4158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2514b817425372469dca23c3bdeb450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainSkillImg: {fileID: 1636472630}
+  Equip_Skill: {fileID: 0}
+  Equip_Skill_img: {fileID: 1636472630}
   MainSkillSlotImg: {fileID: 1009179427}
+  MaskImg: {fileID: 0}
 --- !u!222 &1009179429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4224,7 +4242,7 @@ RectTransform:
   m_Children:
   - {fileID: 1947310033}
   m_Father: {fileID: 880375744}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4600,6 +4618,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1867358456}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5358491838736712020, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_text
       value: R
@@ -5436,6 +5458,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771191988}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5358491838736712020, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_text
       value: S
@@ -6539,7 +6565,7 @@ RectTransform:
   - {fileID: 46179824}
   - {fileID: 2096134767}
   m_Father: {fileID: 880375744}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7817,7 +7843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -166.8}
+  m_AnchoredPosition: {x: 0, y: -160.5}
   m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1947310034
@@ -7941,6 +7967,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1867358456}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5358491838736712020, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_text
       value: W
@@ -8404,6 +8434,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771191988}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5358491838736712020, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_text
       value: A
@@ -8593,11 +8627,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903009f775aa8a94ab6644dbca0bddb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Main_Dragslot: {fileID: 0}
+  Equip_Main_DragSlot: {fileID: 0}
   dragSlot: {fileID: 0}
   Equip_dragSlot: {fileID: 0}
+  Instans: {fileID: 0}
   m_canvas: {fileID: 880375743}
   DragOnEquip: 0
   DragOnInv: 0
+  DragOnHudSlot: 0
+  SlotOn: 0
   Img_SubSkill: {fileID: 1960955184}
   Img_SubSkillSlot: {fileID: 2096134768}
 --- !u!224 &2111534638 stripped
@@ -8918,6 +8957,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1867358456}
     m_Modifications:
+    - target: {fileID: 5347710378543266436, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
+      propertyPath: SlotNum
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6708589852471038544, guid: 007087cdc6e093f4eab906ad8e4c243b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9134,9 +9177,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1693958319}
     - target: {fileID: 6364314478140111962, guid: cc249b3551091c146be91be8cb0026cf, type: 3}
+      propertyPath: _MainSkill.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364314478140111962, guid: cc249b3551091c146be91be8cb0026cf, type: 3}
       propertyPath: _MainSkill.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 0027c4714a0f5b04f97c0916e101cecf, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6906321918099894404, guid: cc249b3551091c146be91be8cb0026cf, type: 3}
       propertyPath: m_RootOrder
       value: 4

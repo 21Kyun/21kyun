@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea300a05a4a0a744db423f98e6299260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  MissileRate: 0
+  damage: 10
+  MissileRate: 3
   Butten: 0
   MissilePos: {fileID: 0}
   MissilePos2: {fileID: 0}
   MissileGO: {fileID: 601587644545165247, guid: ca37e412f2c7106428b186d49a6a17ef, type: 3}
   Player: {fileID: 6094495774335756862, guid: cc249b3551091c146be91be8cb0026cf, type: 3}
-  MMSkillCoolDown: 0
+  SkillCoolDown: 0

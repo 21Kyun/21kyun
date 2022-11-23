@@ -61,7 +61,7 @@
     <Compile Include="Assets\script\Skill\MultiMissile.cs" />
     <Compile Include="Assets\script\SubSkill.cs" />
     <Compile Include="Assets\script\Skill.cs" />
-    <Compile Include="Assets\script\SubSkill\projectile doble.cs" />
+    <Compile Include="Assets\script\SubSkill\projectileDoble.cs" />
     <Compile Include="Assets\script\MainSkillSlot.cs" />
     <Compile Include="Assets\script\Missile.cs" />
     <Compile Include="Assets\script\EquipSubSkillSlot.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Assets\script\Bullet.cs" />
     <Compile Include="Assets\script\Enemy.cs" />
     <Compile Include="Assets\script\Player.cs" />
+    <Compile Include="Assets\script\EquipSkillSlot.cs" />
     <Compile Include="Assets\script\SubSkillSlot.cs" />
     <Compile Include="Assets\script\Attacktag.cs" />
     <Compile Include="Assets\script\CameraMove.cs" />

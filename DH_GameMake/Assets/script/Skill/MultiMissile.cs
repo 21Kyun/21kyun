@@ -84,22 +84,34 @@ public class MultiMissile : MonoBehaviour
         yield return null;
     }
 
-
-
     void UseMultiMissile()
     {
-        StartCoroutine(MisSkill(5, transform.position));
+        SkillWinUI SWUI = (SkillWinUI)FindObjectOfType(typeof(SkillWinUI));
+        float Multifuly;
 
-        IEnumerator MisSkill(int MisCont, Vector3 hitPos)
+        if (SWUI.EquipSubSkillSolt[0].Equip_subskill != null) //슬롯 0번의 장착서브스킬이 null이 아닐때
+        {
+            //Debug.Log("SWUI.EquipSubSkillSolt[0].Equip_subskill != null");
+            projectileDoble PD = SWUI.EquipSubSkillSolt[0].Equip_subskill.SubSkillPrefab.GetComponent<projectileDoble>();
+            Multifuly = PD.X2;
+        }
+        else
+        {
+            Multifuly = 1;
+        }
+        StartCoroutine(MisSkill(5 * Multifuly, transform.position));
+
+        IEnumerator MisSkill(float MisCont, Vector3 hitPos)
         {
             Player player = (Player)FindObjectOfType(typeof(Player));
+            
 
             for (int Cont = 0; Cont < MisCont; Cont++)
             {
                 StartCoroutine(MisRPos(hitPos));
-                yield return new WaitForSeconds(0.07f);
+                yield return new WaitForSeconds(0.35f / MisCont);
                 StartCoroutine(MisLPos(hitPos));
-                yield return new WaitForSeconds(0.07f);
+                yield return new WaitForSeconds(0.35f / MisCont);
             }
             player.IsUseSkill = false;
             Destroy(gameObject, 1);
@@ -111,17 +123,5 @@ public class MultiMissile : MonoBehaviour
         //Debug.Log("QSkill : " + QDown);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "wall" || other.gameObject.tag == "Floor" || other.gameObject.tag == "Enemy")
-        {
-            RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, 5, Vector3.up, 0f, LayerMask.GetMask("Enemy"));
-            foreach (RaycastHit hitObj in rayHits)
-            {
-                hitObj.transform.GetComponent<Enemy>().HitByMis(transform.position,damage);
-            }
-            Destroy(gameObject);
-        }
-    }
 
 }

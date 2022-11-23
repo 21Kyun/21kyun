@@ -6,13 +6,13 @@ using UnityEngine;
 public class Skill : ScriptableObject
 {
     public SkillName _SkillName;
-    public SkillType subSkillType;
+    public List<SkillType> subSkillType;
     public Sprite SkillImg;
     public float SkillCoolDown;
 
     public GameObject SkillPrefab;
 
-
+    public List<SubSkill> _SubSkill = new List<SubSkill>();
     public enum SkillType
     {
         Projectile,//≈ıªÁ√º

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: MultiMissile
   m_EditorClassIdentifier: 
   _SkillName: 0
-  subSkillType: 0
-  SkillImg: {fileID: 0}
-  SkillCoolDown: 10
+  subSkillType: 0000000003000000
+  SkillImg: {fileID: 21300000, guid: 2d479efdd257b4f4c965c4580b407fdb, type: 3}
+  SkillCoolDown: 1
   SkillPrefab: {fileID: 4626971241633583947, guid: 0ad73edf4ab14d648b1fd560ad8e64df, type: 3}
+  _SubSkill:
+  - {fileID: 11400000, guid: dc8ae7ea61e64514f8f2c7d886767d47, type: 2}
