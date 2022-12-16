@@ -10,22 +10,25 @@ public class Skill : ScriptableObject
     public Sprite SkillImg;
     public float SkillCoolDown;
 
+    public float ProjectileMultiful;
+    public bool AutoTagetStat = false;
+
     public GameObject SkillPrefab;
 
-    public List<SubSkill> _SubSkill = new List<SubSkill>();
+    public List<SubSkill> _SubSkill = new List<SubSkill>(5);
     public enum SkillType
     {
         Projectile,//투사체
         NomalDamage,//일반 데미지
         DotDamage,//도트데미지
-        rangeDamage//범위 데미지
+        rangeDamage,//범위 데미지       
     }
+
 
     public enum SkillName
     {
         MultiMissile, //다중미사일
         nuclerMissile //핵미사일
     }
-
 
 }

@@ -84,6 +84,9 @@ public class SubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         if(DragSlot.instance.Equip_dragSlot != null)
         {
             AddSkill(DragSlot.instance.Equip_dragSlot.Equip_subskill);
+            SkillWinUI SWUI = (SkillWinUI)FindObjectOfType(typeof(SkillWinUI));
+            SWUI.MainSkillSlot.Equip_Skill._SubSkill[DragSlot.instance.Equip_Slot_Num] = null;
+            //Debug.Log("SWUI = " + SWUI.EquipSubSkillSolt[0].Equip_Skill._SubSkill[0].SubSkillName);
         }
     }
 

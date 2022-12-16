@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using mathod;
 
 public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
@@ -15,9 +16,12 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
 
     public DragSlot drag_slot;
 
-
+    public int This_Slot_Num;
     //public bool DragOnInv = false;
 
+    
+
+    
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -25,10 +29,11 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
         {
             //Debug.Log(eventData);
             //Debug.Log(Input.mousePosition);
-            Debug.Log("OnBeginDrag");
+            //Debug.Log("OnBeginDrag");
             DragSlot.instance.Equip_dragSlot = this;
             DragSlot.instance.DragSetImage(Equip_SubSkill_img);
             DragSlot.instance.transform.position = eventData.position;
+            DragSlot.instance.Equip_Slot_Num = This_Slot_Num;
         }
     }
 
@@ -36,8 +41,8 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
     {
         if (Equip_subskill != null)
         {
-            Debug.Log("OnDrag");
-            Debug.Log("eventData = " + eventData);
+            //Debug.Log("OnDrag");
+            //Debug.Log("eventData = " + eventData);
             //Debug.Log(Input.mousePosition);
             DragSlot.instance.transform.position = eventData.position;
         }
@@ -62,8 +67,9 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
         {
             if (DragSlot.instance.SlotOn == true)
             {
-                Debug.Log("SlotOn");
+                //Debug.Log("SlotOn");
                 AddSkill(DragSlot.instance.Instans);
+
             }
             else
             {
@@ -75,7 +81,7 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
         {
             DragSlot.instance.Equip_dragSlot = null;
         }
-        Debug.Log("OnEndDrag_E");
+        //Debug.Log("OnEndDrag_E");
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -102,7 +108,7 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
     {
         SubSkill E_SubSkill = Equip_subskill;
 
-        AddSkill(DragSlot.instance.Equip_dragSlot.Equip_subskill);
+        SubSkill Ins_SubSkill = DragSlot.instance.Equip_dragSlot.Equip_subskill;
 
         if (E_SubSkill != null)
         {
@@ -113,6 +119,7 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
             DragSlot.instance.Equip_dragSlot.ClearSlot();
         }
 
+        AddSkill(Ins_SubSkill);
 
     }
 
@@ -123,18 +130,26 @@ public class EquipSubSkillSlot : MonoBehaviour, IPointerClickHandler, IBeginDrag
         Equip_subskill = _subskill;
         Equip_SubSkill_img.sprite = Equip_subskill.SubSkillImg;
         SetColor(1);
-        //MainSkillSlot _Skill = (MainSkillSlot)FindObjectOfType(typeof(MainSkillSlot));
-        //Skill skill = (Skill)FindObjectOfType(typeof(Skill));
-        //Debug.Log("_Skill.Equip_Skill._SubSkill = " + skill._SubSkill[0]);
-        //Debug.Log("Equip_subskill = " + Equip_subskill);
-        //_Skill.Equip_Skill._SubSkill.Add(Equip_subskill);
+        SkillWinUI SWUI = (SkillWinUI)FindObjectOfType(typeof(SkillWinUI));
+        SWUI.MainSkillSlot.Equip_Skill._SubSkill[This_Slot_Num] = Equip_subskill;
+        Equip_subskill.EquipSkill(This_Slot_Num);
     }
 
+    
+
     //스킬 삭제
-    public void ClearSlot()
+    public void ClearSlot() // 순서 리스트 먼저 삭제 후 스킬 제거
     {
+        SkillWinUI SWUI = (SkillWinUI)FindObjectOfType(typeof(SkillWinUI));
+        SubSkill Ins_SubSkill = Equip_subskill;
+        if (Ins_SubSkill != null)
+        {
+            Equip_subskill.ClearSkill(This_Slot_Num, Ins_SubSkill);
+        }
+        SWUI.MainSkillSlot.Equip_Skill._SubSkill[This_Slot_Num] = null;
         Equip_subskill = null;
         Equip_SubSkill_img.sprite = null;
         SetColor(0);
+        
     }
 }

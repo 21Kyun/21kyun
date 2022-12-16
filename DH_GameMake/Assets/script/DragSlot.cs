@@ -13,8 +13,11 @@ public class DragSlot : MonoBehaviour
     public EquipSkillSlot Equip_Main_DragSlot;
     public SubSkillSlot dragSlot;
     public EquipSubSkillSlot Equip_dragSlot;
+    public int Equip_Slot_Num;
 
     public SubSkill Instans;
+
+    public Component SubSkillComp;
 
     public int SlotNum;
 

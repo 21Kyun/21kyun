@@ -16,5 +16,12 @@ MonoBehaviour:
   subSkillType: 0000000003000000
   SkillImg: {fileID: 21300000, guid: 9bb8f4a6953a5f7479df9b25c4a8615e, type: 3}
   SkillCoolDown: 1
+  ProjectileMultiful: 1
+  AutoTagetStat: 0
   SkillPrefab: {fileID: 4478266894798502527, guid: b1ba426b883f80146b058e15b4cdfc7c, type: 3}
-  _SubSkill: []
+  _SubSkill:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

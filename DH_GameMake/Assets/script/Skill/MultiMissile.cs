@@ -9,6 +9,7 @@ public class MultiMissile : MonoBehaviour
     public int damage;
     public float MissileRate;
     public bool Butten;
+    public float Multifuly = 1;
 
     public Transform MissilePos;
     public Transform MissilePos2;
@@ -36,7 +37,7 @@ public class MultiMissile : MonoBehaviour
         Rigidbody MissileRigid = intantMissile.GetComponent<Rigidbody>();
         CapsuleCollider MissileColl = intantMissile.GetComponent<CapsuleCollider>();
         Vector3 RanY = new Vector3(0f, 0f, 0f);
-        RanY.z = RanY.z + Random.RandomRange(1f, 50f);
+        RanY.z = RanY.z + Random.Range(1f, 50f);
         intantMissile.transform.Rotate(RanY, Space.Self);
         for (Vector3 MisRot = new Vector3(5f, 0f, 0f); intantMissile.transform.eulerAngles.x >= 200f || intantMissile.transform.eulerAngles.x <= 10f;) //초기화,조건식,반복
         {
@@ -47,8 +48,9 @@ public class MultiMissile : MonoBehaviour
         }
 
         Vector3 MisRang = hitPos;
-        MisRang.x = MisRang.x + Random.RandomRange(-5f, 5f);
-        MisRang.z = MisRang.z + Random.RandomRange(-5f, 5f);
+        MisRang.x = MisRang.x + Random.Range(-5f, 5f);
+        MisRang.z = MisRang.z + Random.Range(-5f, 5f);
+
 
         intantMissile.transform.forward = MisRang - intantMissile.transform.position;
         MissileRigid.velocity = intantMissile.transform.forward * 70;
@@ -59,12 +61,14 @@ public class MultiMissile : MonoBehaviour
     public IEnumerator MisLPos(Vector3 hitPos)
     {
         Player player = (Player)FindObjectOfType(typeof(Player));
+        SkillWinUI SWUI = (SkillWinUI)FindObjectOfType(typeof(SkillWinUI));
+        GameManiger GM = (GameManiger)FindObjectOfType(typeof(GameManiger));
 
         GameObject intantMissile2 = Instantiate(MissileGO, player.MissilePos2.position, player.MissilePos2.rotation);
         Rigidbody MissileRigid2 = intantMissile2.GetComponent<Rigidbody>();
         CapsuleCollider MissileColl2 = intantMissile2.GetComponent<CapsuleCollider>();
         Vector3 RanY2 = new Vector3(0f, 0f, 0f);
-        RanY2.z = RanY2.z + Random.RandomRange(-1f, -50f);
+        RanY2.z = RanY2.z + Random.Range(-1f, -50f);
         intantMissile2.transform.Rotate(RanY2, Space.Self);
         for (Vector3 MisRot = new Vector3(5f, 0f, 0f); intantMissile2.transform.eulerAngles.x >= 200f || intantMissile2.transform.eulerAngles.x <= 10f;) //초기화,조건식,반복
         {
@@ -75,8 +79,25 @@ public class MultiMissile : MonoBehaviour
         }
 
         Vector3 MisRang = hitPos;
-        MisRang.x = MisRang.x + Random.RandomRange(-5f, 5f);
-        MisRang.z = MisRang.z + Random.RandomRange(-5f, 5f);
+        MisRang.x = MisRang.x + Random.Range(-5f, 5f);
+        MisRang.z = MisRang.z + Random.Range(-5f, 5f);
+
+        if (GM.SkillReset[0].AutoTagetStat == true)
+        {
+            AutoTaget autoTaget = (AutoTaget)FindObjectOfType(typeof(AutoTaget));
+            GameManiger gamemaniger = (GameManiger)FindObjectOfType(typeof(GameManiger));
+
+            MisRang = player.transform.position;
+            MisRang.x = MisRang.x + Random.Range(-5f, 5f);
+            MisRang.z = MisRang.z + Random.Range(-5f, 5f);
+            if (gamemaniger.Col.Length != 0)
+            {
+                //autoTaget.TacticalRaider();
+                MisRang = autoTaget.EnemyPos[0].transform.position;
+                //MisRang = autoTaget.EnemyPos[Random.Range(0, gamemaniger.Col.Length)].position;
+            }
+            Debug.Log("MisRang " + MisRang);
+        }
 
         intantMissile2.transform.forward = MisRang - intantMissile2.transform.position;
         MissileRigid2.velocity = intantMissile2.transform.forward * 70;
@@ -87,18 +108,10 @@ public class MultiMissile : MonoBehaviour
     void UseMultiMissile()
     {
         SkillWinUI SWUI = (SkillWinUI)FindObjectOfType(typeof(SkillWinUI));
-        float Multifuly;
 
-        if (SWUI.EquipSubSkillSolt[0].Equip_subskill != null) //슬롯 0번의 장착서브스킬이 null이 아닐때
-        {
-            //Debug.Log("SWUI.EquipSubSkillSolt[0].Equip_subskill != null");
-            projectileDoble PD = SWUI.EquipSubSkillSolt[0].Equip_subskill.SubSkillPrefab.GetComponent<projectileDoble>();
-            Multifuly = PD.X2;
-        }
-        else
-        {
-            Multifuly = 1;
-        }
+        GameManiger GM = (GameManiger)FindObjectOfType(typeof(GameManiger));
+        Multifuly = GM.SkillReset[0].ProjectileMultiful;
+
         StartCoroutine(MisSkill(5 * Multifuly, transform.position));
 
         IEnumerator MisSkill(float MisCont, Vector3 hitPos)

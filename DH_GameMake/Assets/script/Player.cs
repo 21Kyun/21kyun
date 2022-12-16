@@ -72,6 +72,8 @@ public class Player : MonoBehaviour
 
 
     public SubSkill ProjectileDoble;
+    public SubSkill TacRaider;
+
     public DragSlot _dragSlot;
 
     [SerializeField]
@@ -305,6 +307,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("½ºÅ³ È¹µæ");
             TheSkillWin.AcqireSkill(ProjectileDoble);
+            TheSkillWin.AcqireSkill(TacRaider);
         }
     }
 
@@ -347,8 +350,8 @@ public class Player : MonoBehaviour
 
         if (QDown && !EnemySumRedy && !IsUseSkill && QSkillCoolDownReady && !ActionController)
         {
-            Debug.Log("QDown");
-            Debug.Log("Player Mpos = " + Mpos);
+            //Debug.Log("QDown");
+            //Debug.Log("Player Mpos = " + Mpos);
             StartCoroutine(UseQskill(Mpos));
             
         }
@@ -379,8 +382,8 @@ public class Player : MonoBehaviour
                 transform.LookAt(transform.position + AttacVec);
             }
             var newQskill = Instantiate(_MainSkill[0].SkillPrefab, Mpos, MissilePos.rotation);
-            Debug.Log("Instanse ScriptableObj = " + _MainSkill[0]);
-            Debug.Log(newQskill);
+            //Debug.Log("Instanse ScriptableObj = " + _MainSkill[0]);
+            //Debug.Log(newQskill);
             //Destroy(newQskill);
             QSkillCoolDown = 0;
             yield return null;

@@ -344,8 +344,10 @@
 "Assets/script/Enemy.cs"
 "Assets/script/EquipSkillSlot.cs"
 "Assets/script/EquipSubSkillSlot.cs"
+"Assets/script/GameManiger.cs"
 "Assets/script/MainSKillButten.cs"
 "Assets/script/MainSkillSlot.cs"
+"Assets/script/Method/mathod.cs"
 "Assets/script/Missile.cs"
 "Assets/script/Player.cs"
 "Assets/script/Skill.cs"
@@ -353,6 +355,7 @@
 "Assets/script/Skill/NuclearMissile.cs"
 "Assets/script/SkillWinUI.cs"
 "Assets/script/SubSkill.cs"
+"Assets/script/SubSkill/AutoTaget.cs"
 "Assets/script/SubSkill/projectileDoble.cs"
 "Assets/script/SubSkillSlot.cs"
 -langversion:9.0

@@ -13,15 +13,36 @@ public class SkillWinUI : MonoBehaviour
     private GameObject go_SubSlotsParet;
     [SerializeField]
     private GameObject go_EquipSubSkillParet;
+    [SerializeField]
+    private GameObject go_MainSkillSlot;
+    [SerializeField]
+    private GameObject go_EquipMainSkillSlot1;
+    [SerializeField]
+    private GameObject go_EquipMainSkillSlot2;
+
+
 
     // ½ºÅ³ ½½·Ôµé
+    public MainSkillSlot MainSkillSlot;
+    public EquipSkillSlot[] EquipSkillSlot1;
+    public EquipSkillSlot[] EquipSkillSlot2;
     public SubSkillSlot[] SubSlots;
     public EquipSubSkillSlot[] EquipSubSkillSolt;
 
     private void Start()
     {
+        MainSkillSlot = go_MainSkillSlot.GetComponentInChildren<MainSkillSlot>();
+        EquipSkillSlot1 = go_EquipMainSkillSlot1.GetComponentsInChildren<EquipSkillSlot>();
+        EquipSkillSlot2 = go_EquipMainSkillSlot2.GetComponentsInChildren<EquipSkillSlot>();
         SubSlots = go_SubSlotsParet.GetComponentsInChildren<SubSkillSlot>();
         EquipSubSkillSolt = go_EquipSubSkillParet.GetComponentsInChildren<EquipSubSkillSlot>();
+
+        Debug.Log("Skill Type = " + Skill.SkillType.Projectile);
+
+        for (int i = 0; i < 5; i++)
+        {
+            EquipSubSkillSolt[i].This_Slot_Num = i;
+        }
     }
 
     private void Update()

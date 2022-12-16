@@ -13,6 +13,9 @@ public class NuclearMissile : MonoBehaviour
     public GameObject Player;
 
 
+    public float Multifuly = 1;
+
+
     bool NMSkillCoolDownReady;
 
 
@@ -20,31 +23,45 @@ public class NuclearMissile : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("multiMissile Start");
+        //Debug.Log("multiMissile Start");
         UseMultiMissile();
     }
 
-    public IEnumerator NclMisPos(Vector3 hitPos)
+    public IEnumerator NclMisPos(float MisCount,Vector3 hitPos)
     {
         Player player = (Player)FindObjectOfType(typeof(Player));
+        float Angle = 0;
+        for (int i = 0; i < MisCount; i++)
+        {
+            GameObject intantMissile = Instantiate(MissileGO, player.nuclerMissilePos.position, player.nuclerMissilePos.rotation); // 미사일 생성
+            Rigidbody MissileRigid = intantMissile.GetComponent<Rigidbody>();
+            CapsuleCollider MissileColl = intantMissile.GetComponent<CapsuleCollider>();
 
-        GameObject intantMissile = Instantiate(MissileGO, player.nuclerMissilePos.position, player.nuclerMissilePos.rotation); // 미사일 생성
-        Rigidbody MissileRigid = intantMissile.GetComponent<Rigidbody>();
-        CapsuleCollider MissileColl = intantMissile.GetComponent<CapsuleCollider>();
+            Vector3 MisRang = hitPos;
 
-        Vector3 MisRang = hitPos;
+            intantMissile.transform.forward = MisRang - intantMissile.transform.position;
+            Vector3 Y = intantMissile.transform.eulerAngles;
+            Angle = Angle + Mathf.Pow(-1, i) * (10 * i);
+            Y.y = Y.y + Angle;
+            intantMissile.transform.eulerAngles = Y;
+            //Debug.Log("Y  좌표 = " + Y);
+            //Debug.Log("Angle 값 = " + Angle);
+            //Debug.Log("수식값 = " + (Mathf.Pow(-1,i) * (10* i)));
+             MissileRigid.velocity = intantMissile.transform.forward * 70f;
 
-        intantMissile.transform.forward = MisRang - intantMissile.transform.position;
-        MissileRigid.velocity = intantMissile.transform.forward * 70;
-
-        yield return null;
+            yield return null;
+        }
+        
     }
 
     void UseMultiMissile()
     {
-        Debug.Log("Test Line");
+        //Debug.Log("Test Line");
+
         Player player = (Player)FindObjectOfType(typeof(Player));
-        StartCoroutine(NclMisPos(transform.position));
+        GameManiger GM = (GameManiger)FindObjectOfType(typeof(GameManiger));
+        Multifuly = GM.SkillReset[1].ProjectileMultiful;
+        StartCoroutine(NclMisPos(1 * Multifuly, transform.position));
         player.IsUseSkill = false;
         Destroy(gameObject, 1);
     }

@@ -6,7 +6,11 @@ ScriptsOnlyBuild:
     - CameraMove
     - DragSlot
     - Enemy
+    - EquipSkillSlot
     - EquipSubSkillSlot
+    - MainSKillButten
+    - MainSkillSlot
+    - Missile
     - MultiMissile
     - NuclearMissile
     - Player
@@ -14,6 +18,7 @@ ScriptsOnlyBuild:
     - SkillWinUI
     - SubSkill
     - SubSkillSlot
+    - projectileDoble
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -29,11 +34,14 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
   serializedClasses:
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -51,7 +59,9 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Style
     - TMPro.VertexGradient
     UnityEngine.CoreModule:
+    - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
+    - UnityEngine.Events.PersistentListenerMode
     - UnityEngine.RectOffset
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
@@ -59,8 +69,21 @@ ScriptsOnlyBuild:
     - UnityEngine.TextCore.GlyphMetrics
     - UnityEngine.TextCore.GlyphRect
     UnityEngine.UI:
+    - UnityEngine.UI.AnimationTriggers
+    - UnityEngine.UI.Button/ButtonClickedEvent
+    - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-  methodsToPreserve: []
+    - UnityEngine.UI.Navigation
+    - UnityEngine.UI.ScrollRect/ScrollRectEvent
+    - UnityEngine.UI.Scrollbar/ScrollEvent
+    - UnityEngine.UI.SpriteState
+  methodsToPreserve:
+  - assembly: Assembly-CSharp
+    fullTypeName: MainSKillButten
+    methodName: OnClick
+  - assembly: Assembly-CSharp
+    fullTypeName: MainSKillButten
+    methodName: OnClick
   sceneClasses:
     Assets/Scenes/Engineer.unity:
     - Class: 1
@@ -104,55 +127,71 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1532}
-    - Class: 114
       Script: {instanceID: 1534}
     - Class: 114
-      Script: {instanceID: 1538}
+      Script: {instanceID: 1536}
     - Class: 114
-      Script: {instanceID: 1574}
+      Script: {instanceID: 1540}
     - Class: 114
-      Script: {instanceID: 1602}
+      Script: {instanceID: 1576}
     - Class: 114
-      Script: {instanceID: 1708}
+      Script: {instanceID: 1604}
     - Class: 114
-      Script: {instanceID: 1790}
+      Script: {instanceID: 1710}
     - Class: 114
-      Script: {instanceID: 1850}
+      Script: {instanceID: 1792}
     - Class: 114
-      Script: {instanceID: 2160}
+      Script: {instanceID: 1852}
     - Class: 114
-      Script: {instanceID: 2490}
+      Script: {instanceID: 1956}
     - Class: 114
-      Script: {instanceID: 2504}
+      Script: {instanceID: 2162}
     - Class: 114
-      Script: {instanceID: 2562}
+      Script: {instanceID: 2334}
     - Class: 114
-      Script: {instanceID: 2620}
+      Script: {instanceID: 2392}
     - Class: 114
-      Script: {instanceID: 2668}
+      Script: {instanceID: 2494}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2508}
     - Class: 114
-      Script: {instanceID: 2816}
+      Script: {instanceID: 2566}
     - Class: 114
-      Script: {instanceID: 2844}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 3028}
+      Script: {instanceID: 2672}
     - Class: 114
-      Script: {instanceID: 3440}
+      Script: {instanceID: 2812}
     - Class: 114
-      Script: {instanceID: 3774}
+      Script: {instanceID: 2820}
     - Class: 114
-      Script: {instanceID: 4168}
+      Script: {instanceID: 2848}
     - Class: 114
-      Script: {instanceID: 4392}
+      Script: {instanceID: 3032}
     - Class: 114
-      Script: {instanceID: 4408}
+      Script: {instanceID: 3044}
     - Class: 114
-      Script: {instanceID: 4454}
+      Script: {instanceID: 3132}
     - Class: 114
-      Script: {instanceID: 4834}
+      Script: {instanceID: 3444}
+    - Class: 114
+      Script: {instanceID: 3648}
+    - Class: 114
+      Script: {instanceID: 3780}
+    - Class: 114
+      Script: {instanceID: 4076}
+    - Class: 114
+      Script: {instanceID: 4174}
+    - Class: 114
+      Script: {instanceID: 4398}
+    - Class: 114
+      Script: {instanceID: 4414}
+    - Class: 114
+      Script: {instanceID: 4460}
+    - Class: 114
+      Script: {instanceID: 4838}
+    - Class: 114
+      Script: {instanceID: 4842}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -198,7 +237,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 0b4c97ac2931dbd4bcd1499bd071463e
+      Hash: ad03d9437550f6a7e3fe621818c30687
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SkillWinUI
@@ -282,7 +321,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 62206e251b896906f4fe23cc23eed7b3
+      Hash: 57d115bb06c3266c6bd1f67f8d96bd69
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Skill
@@ -292,6 +331,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: d08ca52ad966c5b754372900cd6485c2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: projectileDoble
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -330,13 +375,19 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 579147ae99b86f1089c978b23a380375
+      Hash: 0c67d0af1bef265af82450a5955a5535
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainSkillSlot
+  - hash:
+      serializedVersion: 2
+      Hash: 13986a26e2c9c52dc9767fd46e921521
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Missile
   - hash:
       serializedVersion: 2
-      Hash: 7c52899bb5439a65edb5d26611ede38d
+      Hash: a7819858a01a06f645a105ea4bd2a8e0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EquipSubSkillSlot
@@ -348,7 +399,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: a58f09c6be2905ceda4cf7f1abcdaf43
+      Hash: f41fc36ccc1c5478a125d615e61339fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DragSlot
@@ -516,7 +567,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 9a70d655550964013e509c2c3ef46697
+      Hash: e6685ef7f14ec852b4e11cd1e52cfd4d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -562,6 +613,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 2ada00024135e774de619d7b51c1fc1a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EquipSkillSlot
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -688,6 +745,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 1f6c3a83462b4681793a81a1b84bffc3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainSKillButten
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
