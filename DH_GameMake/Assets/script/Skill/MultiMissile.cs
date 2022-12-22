@@ -32,6 +32,7 @@ public class MultiMissile : MonoBehaviour
     public IEnumerator MisRPos(Vector3 hitPos)
     {
         Player player = (Player)FindObjectOfType(typeof(Player));
+        GameManiger GM = (GameManiger)FindObjectOfType(typeof(GameManiger));
 
         GameObject intantMissile = Instantiate(MissileGO, player.MissilePos.position, player.MissilePos.rotation);
         Rigidbody MissileRigid = intantMissile.GetComponent<Rigidbody>();
@@ -51,6 +52,20 @@ public class MultiMissile : MonoBehaviour
         MisRang.x = MisRang.x + Random.Range(-5f, 5f);
         MisRang.z = MisRang.z + Random.Range(-5f, 5f);
 
+        //전술레이더 로직
+        if (GM.SkillReset[0].AutoTagetStat == true)
+        {
+            AutoTaget autoTaget = GM.autoTaget;
+
+            MisRang = player.transform.position;
+            MisRang.x = MisRang.x + Random.Range(-10f, 10f);
+            MisRang.z = MisRang.z + Random.Range(-10f, 10f);
+            if (GM.Col.Length != 0)
+            {
+                autoTaget.TacticalRaider();
+                MisRang = autoTaget.EnemyPos[Random.Range(0, GM.Col.Length)];
+            }
+        }
 
         intantMissile.transform.forward = MisRang - intantMissile.transform.position;
         MissileRigid.velocity = intantMissile.transform.forward * 70;
@@ -61,7 +76,6 @@ public class MultiMissile : MonoBehaviour
     public IEnumerator MisLPos(Vector3 hitPos)
     {
         Player player = (Player)FindObjectOfType(typeof(Player));
-        SkillWinUI SWUI = (SkillWinUI)FindObjectOfType(typeof(SkillWinUI));
         GameManiger GM = (GameManiger)FindObjectOfType(typeof(GameManiger));
 
         GameObject intantMissile2 = Instantiate(MissileGO, player.MissilePos2.position, player.MissilePos2.rotation);
@@ -82,21 +96,23 @@ public class MultiMissile : MonoBehaviour
         MisRang.x = MisRang.x + Random.Range(-5f, 5f);
         MisRang.z = MisRang.z + Random.Range(-5f, 5f);
 
+        //전술레이더 로직
         if (GM.SkillReset[0].AutoTagetStat == true)
         {
-            AutoTaget autoTaget = (AutoTaget)FindObjectOfType(typeof(AutoTaget));
-            GameManiger gamemaniger = (GameManiger)FindObjectOfType(typeof(GameManiger));
+            AutoTaget autoTaget = GM.autoTaget;
 
             MisRang = player.transform.position;
-            MisRang.x = MisRang.x + Random.Range(-5f, 5f);
-            MisRang.z = MisRang.z + Random.Range(-5f, 5f);
-            if (gamemaniger.Col.Length != 0)
+            MisRang.x = MisRang.x + Random.Range(-10f, 10f);
+            MisRang.z = MisRang.z + Random.Range(-10f, 10f);
+            if (GM.Col.Length != 0)
             {
-                //autoTaget.TacticalRaider();
-                MisRang = autoTaget.EnemyPos[0].transform.position;
-                //MisRang = autoTaget.EnemyPos[Random.Range(0, gamemaniger.Col.Length)].position;
+                Debug.Log("autoTaget " + autoTaget);
+                //Debug.Log("autoTaget " + autoTaget.EnemyPos[0]);
+                //Debug.Log("EnemyPos = " + GM.Col[0].transform.position.GetType());
+                autoTaget.TacticalRaider();
+                //MisRang = autoTaget.EnemyPos[0];
+                MisRang = autoTaget.EnemyPos[Random.Range(0, GM.Col.Length)];
             }
-            Debug.Log("MisRang " + MisRang);
         }
 
         intantMissile2.transform.forward = MisRang - intantMissile2.transform.position;

@@ -17,7 +17,6 @@ public class GameManiger : MonoBehaviour
     public Skill SkillSave;
 
     public List<GameObject> EnemyPos;
-    GameObject Raider;
 
 
     void Start()
@@ -45,13 +44,6 @@ public class GameManiger : MonoBehaviour
 
     void Update()
     {
-        if (Col.Length != 0)
-        {
-            AutoTaget _autoTaget = autoTaget;
-            Debug.Log(_autoTaget);
-            _autoTaget.TacticalRaider();
-            Debug.Log(_autoTaget.EnemyPos[0]);
-        }
     }
         
 

@@ -5170,7 +5170,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   SkillSave: {fileID: 0}
-  EnemyPos: []
+  EnemyPos:
+  - {fileID: 0}
 --- !u!1001 &1367519665
 PrefabInstance:
   m_ObjectHideFlags: 0
