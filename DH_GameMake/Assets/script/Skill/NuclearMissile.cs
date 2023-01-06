@@ -44,7 +44,7 @@ public class NuclearMissile : MonoBehaviour
 
             Vector3 MisRang = hitPos;
 
-            if (GM.SkillReset[0].AutoTagetStat == true)
+            if (GM.SkillReset[1].AutoTagetStat == true)
             {
                 if (GM.Col.Length != 0)
                 {
@@ -56,6 +56,7 @@ public class NuclearMissile : MonoBehaviour
            
 
             intantMissile.transform.forward = MisRang - intantMissile.transform.position;
+
             if (GM.Col.Length == 0)
             {
                 //원뿔모양으로 발사

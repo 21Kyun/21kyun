@@ -353,11 +353,13 @@
 "Assets/script/Skill.cs"
 "Assets/script/Skill/MultiMissile.cs"
 "Assets/script/Skill/NuclearMissile.cs"
+"Assets/script/Skill/WPM.cs"
 "Assets/script/SkillWinUI.cs"
 "Assets/script/SubSkill.cs"
 "Assets/script/SubSkill/AutoTaget.cs"
 "Assets/script/SubSkill/projectileDoble.cs"
 "Assets/script/SubSkillSlot.cs"
+"Assets/script/WPMobj.cs"
 -langversion:9.0
 
 /deterministic

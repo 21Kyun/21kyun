@@ -12,6 +12,7 @@ public class GameManiger : MonoBehaviour
     [SerializeField] float Radius;
     [SerializeField] public Collider[] Col;
 
+    public List<SubSkill> SubSkills;
     public List<Skill> SkillReset = new List<Skill>();
     //public List<Skill> SkillSave = new List<Skill>();
     public Skill SkillSave;
