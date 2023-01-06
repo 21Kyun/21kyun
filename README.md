@@ -1,5 +1,6 @@
 ### 균고구마(21Kyun) 👋
-PPT - 제작중인 게임파일
+PP - 제작중인 게임파일 
+(게임 실행파일 및 유니티 파일이 있습니다)
 
 <!--
 **21Kyun/21kyun** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
