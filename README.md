@@ -1,5 +1,6 @@
 ### 균고구마(21Kyun) 👋
-스킬 커스텀형 RPG - 제작중인 RPG 게임 코드 
+스킬 커스텀형 RPG - RPG 게임 코드 (제작 중)
+LCK(Love City Korea) - 미연시 게임 (제작 중)
 
 <!--
 **21Kyun/21kyun** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
